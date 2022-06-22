@@ -14,8 +14,15 @@ app.get('/chat', (req, res) => {
   });
 
 io.on('connection', (socket) => {
+
+socket.on('add username', (username) => {
+      socket.username = username;
+      console.log(username + " is connected")
+      io.emit('user notification',username)
+    });
+
 socket.on('chat message', (data) => {
-      console.log('recieved: '+data.username + data.msg);
+      console.log('recieved: '+ data.username + data.msg);
       io.emit('chat message', data);
     });
 
