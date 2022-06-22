@@ -12,8 +12,8 @@
     </div>
 
     <div id="login-div">
-      <form>  
-      <input type="text" placeholder="username" id="login_field">
+      <form id="form">  
+      <input type="text" placeholder="username" id="login_field" maxlength="15"required>
       <div id="btn-div">
           <button class="btn">Enter</button>
 
@@ -66,5 +66,19 @@ body{
     border: 1ch black;
     transition: 1ms;
 }
+.btn:hover {
+  background-color: #3e8e41;
+}
 
 </style>
+<script>
+var form = document.getElementById('form');
+var input = document.getElementById('login_field');
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  console.log(input.value);
+  localStorage.setItem('username',input.value);
+  window.location.replace("/chat")
+});
+</script>
