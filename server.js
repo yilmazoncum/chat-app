@@ -6,6 +6,10 @@ import {Server} from 'socket.io'
 const io = new Server(server);
 
 app.get('/', (req, res) => {
+    res.sendFile(process.cwd()+ '/login.html');
+  });
+
+app.get('/chat', (req, res) => {
     res.sendFile(process.cwd()+ '/index.html');
   });
 
